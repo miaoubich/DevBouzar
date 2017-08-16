@@ -1,8 +1,0 @@
-C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
-C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
-C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
