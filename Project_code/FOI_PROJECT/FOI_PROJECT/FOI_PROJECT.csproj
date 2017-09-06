@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B98CB506-028C-43A7-8ABF-88FF42989283}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FOI_PROJECT</RootNamespace>
+    <AssemblyName>FOI_PROJECT</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>.\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>.\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra">
+      <HintPath>.\itextsharp.xtra.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInformationSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComputerInformationSystem.Designer.cs">
+      <DependentUpon>ComputerInformationSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HardwareInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HardwareInfo.Designer.cs">
+      <DependentUpon>HardwareInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Items.Designer.cs">
+      <DependentUpon>Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PC_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PC_info.Designer.cs">
+      <DependentUpon>PC_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principle.Designer.cs">
+      <DependentUpon>Principle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RAM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RAM.Designer.cs">
+      <DependentUpon>RAM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="USBDetector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="USBDetector.Designer.cs">
+      <DependentUpon>USBDetector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedSlot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsedSlot.Designer.cs">
+      <DependentUpon>UsedSlot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet.cs">
+      <DependentUpon>_17075i_DBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_17075i_DBDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17075i_DBDataSet8.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComputerInformationSystem.resx">
+      <DependentUpon>ComputerInformationSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HardwareInfo.resx">
+      <DependentUpon>HardwareInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Items.resx">
+      <DependentUpon>Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_info.resx">
+      <DependentUpon>PC_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principle.resx">
+      <DependentUpon>Principle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RAM.resx">
+      <DependentUpon>RAM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="USBDetector.resx">
+      <DependentUpon>USBDetector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedSlot.resx">
+      <DependentUpon>UsedSlot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User.resx">
+      <DependentUpon>User.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="_17075i_DBDataSet.xsc">
+      <DependentUpon>_17075i_DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet.xss">
+      <DependentUpon>_17075i_DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet1.xsc">
+      <DependentUpon>_17075i_DBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet1.xss">
+      <DependentUpon>_17075i_DBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet2.xsc">
+      <DependentUpon>_17075i_DBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet2.xss">
+      <DependentUpon>_17075i_DBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet3.xsc">
+      <DependentUpon>_17075i_DBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet3.xss">
+      <DependentUpon>_17075i_DBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet4.xsc">
+      <DependentUpon>_17075i_DBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet4.xss">
+      <DependentUpon>_17075i_DBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet5.xsc">
+      <DependentUpon>_17075i_DBDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet5.xss">
+      <DependentUpon>_17075i_DBDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet6.xsc">
+      <DependentUpon>_17075i_DBDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet6.xss">
+      <DependentUpon>_17075i_DBDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet7.xsc">
+      <DependentUpon>_17075i_DBDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet7.xss">
+      <DependentUpon>_17075i_DBDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet8.xsc">
+      <DependentUpon>_17075i_DBDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="_17075i_DBDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17075i_DBDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_17075i_DBDataSet8.xss">
+      <DependentUpon>_17075i_DBDataSet8.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,14 @@
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\bin\Debug\FOI.exe.config
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\bin\Debug\FOI.exe
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\bin\Debug\FOI.pdb
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\FOI.csprojResolveAssemblyReference.cache
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\MainWindow.g.cs
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\App.g.cs
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\FOI_MarkupCompile.cache
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\FOI_MarkupCompile.lref
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\MainWindow.baml
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\FOI.g.resources
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\FOI.Properties.Resources.resources
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\FOI.csproj.GenerateResource.Cache
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\FOI.exe
+C:\Users\DARIN\Desktop\FOI\3rd_year\6th semester\Software engineering\GitHub\r17075i\Project_code\FOI\FOI\obj\Debug\FOI.pdb
