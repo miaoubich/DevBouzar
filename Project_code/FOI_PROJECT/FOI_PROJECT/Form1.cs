@@ -16,8 +16,8 @@ namespace FOI_PROJECT
         SqlDataAdapter sda;
         DataTable dt;
         SqlConnection con;
-        string utype, utype1, str;
-        //public static string utype;
+        string utype1, str;
+        public static string utype;
         public Form1()
         {
             InitializeComponent();
@@ -42,7 +42,6 @@ namespace FOI_PROJECT
             sda = new SqlDataAdapter(str, con);
             dt = new DataTable();
             sda.Fill(dt);
-            //utype = dt.Rows[0][8].ToString();
 
             if (dt.Rows.Count > 0)
             {
@@ -51,13 +50,14 @@ namespace FOI_PROJECT
                     this.Hide();
                     Principle it = new Principle();
                     it.Show();
+                    //MessageBox.Show("Welcome back " + txt_Username.Text);
                 }
                 else
                 {
                     this.Hide();
                     Client c = new Client();
                     c.Show();
-                    //MessageBox.Show(utype);
+                    //MessageBox.Show("Welcome back " + txt_Username.Text);
                 }
                 
             }

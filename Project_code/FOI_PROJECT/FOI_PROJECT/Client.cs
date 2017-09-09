@@ -20,15 +20,8 @@ namespace FOI_PROJECT
         SqlConnection con;
         SqlDataAdapter sda, sda1;
         DataTable dt, dt1;
-        String str, str1;
-        SqlCommandBuilder scb;
+        String str;
         SqlCommand cmd;
-        int i = 0;
-        int i1 = 0;
-        int stock1 = 0;
-        int qBuy = 0;
-        int qLeft = 0;
-        int v = 0, v1;
         
         public Client()
         {
@@ -37,26 +30,31 @@ namespace FOI_PROJECT
 
         private void button1_Click(object sender, EventArgs e)
         {
-           this.Close();
-           Principle p = new Principle();
-           p.Show(); 
+            if (Form1.utype == "administrator")
+            {
+                this.Hide();
+                Principle p = new Principle();
+                p.Show();
+            }
+            else
+            {
+                const string m = "Please confirm closing the system?";
+                const string cap = "Closing FORM.";
+                var result = MessageBox.Show(m, cap, MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if (result == DialogResult.Yes) {
+                    Application.Exit();
+                }
+                else
+                {
+
+                }
+            }
         }
 
         private void Client_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-            /*
-            const string m = "Please Confirm Closing the System.";
-            const string caption = "Form Closing.";
-            var result = MessageBox.Show(m, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //if the No button was pressed...
-            if (result == DialogResult.No)
-            {
-                //cancel closure of the form.
-                e.Cancel = true;
-            }
-         */
+           
         }
 
         private void Client_Load(object sender, EventArgs e)
@@ -77,32 +75,18 @@ namespace FOI_PROJECT
 
         void Fill_table()
         {
-            str = "SELECT item1.code_item AS [code], item1.designation, item1.model, item1.brand, item1.price, item1.stock, " +
+            str = "SELECT item1.id, item1.code_item AS [code], item1.designation, item1.model, item1.brand, item1.price, item1.stock, " +
                   "item2.designation AS [Compatible with] FROM component item1, component item2, compatibility comp " +
-                  "WHERE comp.id1 = item1.id AND comp.id2 = item2.id";
+                  "WHERE comp.id1 = item1.id AND comp.id2 = item2.id ORDER BY item1.id ASC";
             sda = new SqlDataAdapter(str, con);
             dt = new DataTable();
             sda.Fill(dt);
             ItemsTable.DataSource = dt;
-
-            /*foreach (DataRow item in dt.Rows)
-            {
-                int n = dataGridView1.Rows.Add();
-                dataGridView1.Rows[n].Cells[0].Value = false;
-                dataGridView1.Rows[n].Cells[1].Value = item[1].ToString();
-                dataGridView1.Rows[n].Cells[2].Value = item[2].ToString();
-                dataGridView1.Rows[n].Cells[3].Value = item[3].ToString();
-                dataGridView1.Rows[n].Cells[4].Value = item[4].ToString();
-                dataGridView1.Rows[n].Cells[5].Value = item[5].ToString();
-                dataGridView1.Rows[n].Cells[6].Value = item[6].ToString();
-                dataGridView1.Rows[n].Cells[7].Value = item[7].ToString();
-                dataGridView1.Rows[n].Cells[8].Value = item[8].ToString();
-            }*/
         }
 
         void Fill_wish()
         {
-            str = "SELECT code_item, designation, model, brand, price, quantity FROM wish_List";
+            str = "SELECT *FROM wish_List";
             sda1 = new SqlDataAdapter(str, con);
             dt1 = new DataTable();
             sda1.Fill(dt1);
@@ -182,6 +166,14 @@ namespace FOI_PROJECT
             timer1.Stop();
             progressBar1.Value = 0;
             Fill_wish();
+
+            txt_ID.Text = "";
+            txt_Code.Text = "";
+            txt_Designation.Text = "";
+            txt_Model.Text = "";
+            txt_Brand.Text = "";
+            txt_Price.Text = "";
+            txt_Quantite.Text = "";
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
@@ -196,81 +188,93 @@ namespace FOI_PROJECT
 
         private void button4_Click(object sender, EventArgs e)
         {
+            string strDelete = "DELETE FROM wish_List WHERE id = " + txt_ID.Text + "";
+            SqlCommand sc = new SqlCommand(strDelete, con);
+            sc.ExecuteNonQuery();
 
+            Fill_wish();
+
+            txt_ID.Text = "";
+            txt_Code.Text = "";
+            txt_Designation.Text = "";
+            txt_Model.Text = "";
+            txt_Brand.Text = "";
+            txt_Price.Text = "";
+            txt_Quantite.Text = ""; 
+
+            MessageBox.Show("Item has been DELETED Successfully!");
+
+        }
+
+        private void wish_Table_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txt_ID.Text = wish_Table.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txt_Code.Text = wish_Table.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txt_Designation.Text = wish_Table.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txt_Model.Text = wish_Table.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txt_Brand.Text = wish_Table.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txt_Price.Text = wish_Table.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txt_Quantite.Text = wish_Table.Rows[e.RowIndex].Cells[6].Value.ToString();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            const string m = "Please confirm deleting your items wish list?";
+            const string c = "CONFIRM DELETION";
+            var result = MessageBox.Show(m, c, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+
+                string str = "TRUNCATE TABLE wish_List";
+                cmd = new SqlCommand(str, con);
+                cmd.ExecuteNonQuery();
+                Fill_wish();
+                MessageBox.Show("The Wish List has been DELETED Successfully!");
+            }
+            else
+            {
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            cmd = new SqlCommand("UPDATE wish_List SET quantity = " + txt_Quantity.Text + " WHERE id = " + txt_Search.Text + "", con);
+            cmd = new SqlCommand("UPDATE wish_List SET quantity = " + txt_Quantite.Text + " WHERE id = " + txt_ID.Text + "", con); 
             cmd.ExecuteNonQuery();
-            
-            i1 = Convert.ToInt32(txt_Search.Text);
-            int r1 = ItemsTable.Rows.Count;
-            int t1 = i1 - r1;
 
-            if (t1 > 0)
-            {
-                i = i1 - t1 - 1;
-                qBuy = Convert.ToInt32(txt_Quantity.Text);
-                qLeft = Convert.ToInt32(ItemsTable.Rows[i].Cells[6].Value.ToString());
-                stock1 = qLeft - qBuy;
-                stock1 = Convert.ToInt32(stock1);
-                SqlCommand cmd1 = new SqlCommand("UPDATE component SET stock = " + stock1 + " WHERE id = " + txt_Search.Text + "", con);
-                cmd1.ExecuteNonQuery();
-            }
-            else if(t1 < 0)
-            {
-                i = i1 - 1;
-                qBuy = Convert.ToInt32(txt_Quantity.Text);
-                qLeft = Convert.ToInt32(ItemsTable.Rows[i].Cells[6].Value.ToString());
-                stock1 = qLeft - qBuy;
-                stock1 = Convert.ToInt32(stock1);
-                SqlCommand cmd1 = new SqlCommand("UPDATE component SET stock = " + stock1 + " WHERE id = " + txt_Search.Text + "", con);
-                cmd1.ExecuteNonQuery();
-            }
-            else
-            {
-                i = i1 - 2;
-                qBuy = Convert.ToInt32(txt_Quantity.Text);
-                qLeft = Convert.ToInt32(ItemsTable.Rows[i].Cells[6].Value.ToString());
-                stock1 = qLeft - qBuy;
-                stock1 = Convert.ToInt32(stock1);
-                SqlCommand cmd1 = new SqlCommand("UPDATE component SET stock = " + stock1 + " WHERE id = " + txt_Search.Text + "", con);
-                cmd1.ExecuteNonQuery();
-            }
-            Fill_table();
-            Fill_wish();
-            txt_Quantity.Text = "";
+            txt_ID.Text = "";
+            txt_Code.Text = "";
+            txt_Designation.Text = "";
+            txt_Model.Text = "";
+            txt_Brand.Text = "";
+            txt_Price.Text = "";
+            txt_Quantite.Text = "";
             txt_Search.Text = "";
+
+            Fill_table();
+            Fill_wish(); 
+
+            MessageBox.Show("Item has been UPDATED Successfully!");
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            var r = 0;
-            v1 = Convert.ToInt32(txt_Search.Text);
-            //v = v - 1;
-            r = ItemsTable.Rows.Count;
-            int t = v1 - r;
-            if (t > 0) {
-                v = v1 - t-1;
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO wish_List VALUES(" + ItemsTable.Rows[v].Cells[0].Value + ",'" + ItemsTable.Rows[v].Cells[1].Value + "', '" + ItemsTable.Rows[v].Cells[2].Value + "', '" + ItemsTable.Rows[v].Cells[3].Value + "', '" + ItemsTable.Rows[v].Cells[4].Value + "', " + ItemsTable.Rows[v].Cells[5].Value + ", " + ItemsTable.Rows[v].Cells[6].Value + ")", con);
-                cmd.ExecuteNonQuery();
-                Fill_wish();
-            }
-            else if(t < 0)
-            {
-                v = v1-1;
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO wish_List VALUES(" + ItemsTable.Rows[v].Cells[0].Value + ",'" + ItemsTable.Rows[v].Cells[1].Value + "', '" + ItemsTable.Rows[v].Cells[2].Value + "', '" + ItemsTable.Rows[v].Cells[3].Value + "', '" + ItemsTable.Rows[v].Cells[4].Value + "', " + ItemsTable.Rows[v].Cells[5].Value + ", " + ItemsTable.Rows[v].Cells[6].Value + ")", con);
-                cmd.ExecuteNonQuery();
-                Fill_wish();
-            }
-            else
-            {
-                v = v1 - 2;
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO wish_List VALUES(" + ItemsTable.Rows[v].Cells[0].Value + ",'" + ItemsTable.Rows[v].Cells[1].Value + "', '" + ItemsTable.Rows[v].Cells[2].Value + "', '" + ItemsTable.Rows[v].Cells[3].Value + "', '" + ItemsTable.Rows[v].Cells[4].Value + "', " + ItemsTable.Rows[v].Cells[5].Value + ", " + ItemsTable.Rows[v].Cells[6].Value + ")", con);
-                cmd.ExecuteNonQuery();
-                Fill_wish();
-            }
+            string strAdd = "INSERT INTO wish_List(code_item, designation, model, brand, price, quantity) " +
+                            "VALUES('" + txt_Code.Text + "', '" + txt_Designation.Text + "', '" + txt_Model.Text + "'," +
+                            " '" + txt_Brand.Text + "', " + txt_Price.Text + ", " + txt_Quantite.Text + ")";
+            SqlCommand  sc = new SqlCommand(strAdd, con);
+            sc.ExecuteNonQuery();
+
+            txt_ID.Text = "";
+            txt_Code.Text = "";
+            txt_Designation.Text = "";
+            txt_Model.Text = "";
+            txt_Brand.Text = "";
+            txt_Price.Text = "";
+            txt_Quantite.Text = "";
+
+            Fill_wish();
+
             txt_Search.Text = "";
         }
 
@@ -337,20 +341,17 @@ namespace FOI_PROJECT
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             comboBox1.Text = "";
-            /*for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                dataGridView1.Rows[i].Cells[0].Value = false;
-            }*/
-            var item = ItemsTable.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txt_Search.Text = item;
+            
+            txt_ID.Text = ItemsTable.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txt_Code.Text = ItemsTable.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txt_Designation.Text = ItemsTable.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txt_Model.Text = ItemsTable.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txt_Brand.Text = ItemsTable.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txt_Price.Text = ItemsTable.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txt_Quantite.Text = ItemsTable.Rows[e.RowIndex].Cells[6].Value.ToString();
 
             //int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            str1 = "SELECT code_item,designation,model,brand,price,stock FROM component WHERE id LIKE '" + txt_Search.Text + "%'";
-            sda1 = new SqlDataAdapter(str1, con);
-            dt1 = new DataTable();
-            sda1.Fill(dt1);
-            wish_Table.DataSource = dt1;
+            
         }
     }
 }

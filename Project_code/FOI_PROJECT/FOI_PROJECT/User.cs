@@ -52,6 +52,7 @@ namespace FOI_PROJECT
         {
             Fill_Table();
             txt_Search.Text = "";
+            comboBox1.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -33,20 +33,24 @@ namespace FOI_PROJECT
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             Form1 f = new Form1();
             f.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Client c = new Client();
-            c.Show();
+            if (Form1.utype == "administrator")
+            {
+                this.Hide();
+                Client c = new Client();
+                c.Show();
+            }
         }
 
         private void Principle_FormClosing(object sender, FormClosingEventArgs e)
         {
+            /*
             const string m = "Please Confirm Closing the System.";
             const string caption = "Form Closing.";
             var result = MessageBox.Show(m, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -57,6 +61,7 @@ namespace FOI_PROJECT
                 //cancel closure of the form.
                 e.Cancel = true;
             }
+            */
         }
     }
 }

@@ -59,22 +59,30 @@ namespace FOI_PROJECT
         }
 
         public void Fill_Compatible()
-        {
-            str = "SELECT item1.designation, item2.designation AS [Compatible with] " +
+        { 
+            str = "SELECT item1.designation AS Component, item2.designation AS [Compatible with] " +
                   "FROM component item1, component item2, compatibility comp " +
-                  "WHERE comp.id1 = item1.id AND comp.id2 = item2.id";
+                  "WHERE comp.id1 = item1.id AND comp.id2 = item2.id AND comp.compatible = 1 ORDER BY item1.designation ASC";
             sda = new SqlDataAdapter(str, con);
             dt = new DataTable();
             sda.Fill(dt);
-            ItemCompatible.DataSource = dt;
+            ItemsCompatible.DataSource = dt;
         }
-
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Principle p = new Principle();
-            p.Show();
+            const string m = "Please confirm closing the Items Form";
+            const string cap = "EXIT FORM";
+            var result = MessageBox.Show(m, cap, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes) {
+                this.Hide();
+                Principle p = new Principle();
+                p.Show();
+            }
+            else
+            {
+
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -96,6 +104,9 @@ namespace FOI_PROJECT
                 scb = new SqlCommandBuilder(sda);
                 sda.Update(dt);
                 Fill_Table();
+
+                SelectedItem1.Text = "";
+                SelectedItem2.Text = "";
                 MessageBox.Show("Data have been SUCCESSFULLY saved.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -185,21 +196,19 @@ namespace FOI_PROJECT
 
         private void txt_Table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //id = Convert.ToInt32(txt_Table.Rows[e.RowIndex].Cells["id"].Value.ToString());
             category.Text = "";
             var item = ItemsTable.Rows[e.RowIndex].Cells[0].Value.ToString();
 
                 if (SelectedItem1.Text != "")
                 {
                     SelectedItem2.Text = item;
-                    //string idItem2 = "INSERT INTO compatibility(id2) VALUES('" + SelectedItem2.Text + "')";
                     string idItem2 = "UPDATE compatibility SET id2 = '" + SelectedItem2.Text + "' WHERE id1 = '" + SelectedItem1.Text + "'";
                     sc = new SqlCommand(idItem2, con);
                     sc.ExecuteNonQuery();
                 }
                 else
                 {
-                    const string v = "Do you want to delete an item?";
+                    const string v = "To DELETE click 'Yes', else click 'No'.";
                     const string info = "INFO MESSAGE";
                     var result = MessageBox.Show(v, info, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
@@ -211,14 +220,17 @@ namespace FOI_PROJECT
                         if (SelectedItem1.Text == "")
                         {
                             SelectedItem1.Text = item;
-                            string idItem1 = "INSERT INTO compatibility(id1) VALUES('" + SelectedItem1.Text + "')";
-                            sc1 = new SqlCommand(idItem1, con);
-                            sc1.ExecuteNonQuery();
+
+                            //if (SelectedItem1.Text != "")
+                            //{
+                                string idItem1 = "INSERT INTO compatibility(id1) VALUES('" + SelectedItem1.Text + "')";
+                                sc1 = new SqlCommand(idItem1, con);
+                                sc1.ExecuteNonQuery();
+                            //}
                         }
                         else if (SelectedItem1.Text != "")
                         {
                             SelectedItem2.Text = item;
-                            //string idItem2 = "INSERT INTO compatibility(id2) VALUES('" + SelectedItem2.Text + "')";
                             string idItem2 = "UPDATE compatibility SET id2 = '" + SelectedItem2.Text + "' WHERE id1 = '" + SelectedItem1.Text + "'";
                             sc2 = new SqlCommand(idItem2, con);
                             sc2.ExecuteNonQuery();
@@ -249,6 +261,7 @@ namespace FOI_PROJECT
                 e.Cancel = true;
             }
             */
+            Application.Exit();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -282,7 +295,7 @@ namespace FOI_PROJECT
             doc.Add(para);
             doc.Add(para1);
 
-            //list.IndentationLeft = 35f; when we create a list with a margin in the left
+            //list.IndentationLeft = 35f; //when we create a list with a margin in the left
 
             //Add Header
             /*
@@ -341,12 +354,6 @@ namespace FOI_PROJECT
 
         private void button9_Click(object sender, EventArgs e)
         {
-            /*SelectQuery Sq = new SelectQuery("Win32_BaseBoard");// ("Win32_MotherboardDevice"); 
-            ManagementObjectSearcher objOSDetails = new ManagementObjectSearcher(Sq);
-            ManagementObjectCollection osDetailsCollection = objOSDetails.Get();
-            StringBuilder sb = new StringBuilder();
-            foreach (ManagementObject mo in osDetailsCollection)*/
-
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT *FROM Win32_BaseBoard"); 
             
             foreach(ManagementObject mo in searcher.Get())
@@ -384,9 +391,7 @@ namespace FOI_PROJECT
 
         private void label3_Click(object sender, EventArgs e)
         {
-            /*ComputerInfo CI = new ComputerInfo();
-            ulong mem = ulong.Parse(CI.AvailablePhysicalMemory.ToString());
-            usedRam.Text = (mem / (1024 * 1024) + " MB").ToString();*/
+
         }
 
         private void usedRam_Click(object sender, EventArgs e)
@@ -408,6 +413,68 @@ namespace FOI_PROJECT
 
         }
 
+        private void ItemsCompatible_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+           
+        }
+
+        private void ItemsCompatible_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var item = ItemsCompatible.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txt_Search.Text = item;
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            if(txt_Search.Text == "")
+            {
+                MessageBox.Show("Please select an Item.");
+            }
+            else
+            {
+                var itemDelete1 = "SELECT id FROM component WHERE designation = '" + txt_Search.Text + "'";
+                sc2 = new SqlCommand(itemDelete1, con);
+                sc2.ExecuteNonQuery();
+                var itemDelete = sc2.ExecuteScalar().ToString();
+
+                int idDelete = int.Parse(itemDelete);
+
+                string str1 = "DELETE FROM compatibility WHERE id1 = '" + idDelete + "'";
+                sc = new SqlCommand(str1, con);
+                sc.ExecuteNonQuery();
+
+                Fill_Compatible();
+                MessageBox.Show("Item has been deleted.");
+                txt_Search.Text = "";
+            }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            if (InputCode.Text == "" && InputDesignation.Text == "" && InputModel.Text == "" && InputBrand.Text == "" || InputPrice.Text == "" || InputStock.Text == "")
+            {
+                MessageBox.Show("Please Fill all the Boxes.");
+            }
+            else
+            {
+                string strAdd = "INSERT INTO component(code_item, designation, model, brand, price, stock) " +
+                                "VALUES('" + InputCode.Text + "', '" + InputDesignation.Text + "', '" + InputModel.Text + "'," +
+                                " '" + InputBrand.Text + "', " + InputPrice.Text + ", " + InputStock.Text + ")";
+                sc = new SqlCommand(strAdd, con);
+                sc.ExecuteNonQuery();
+                Fill_Table();
+                InputCode.Text = "";
+                InputDesignation.Text = "";
+                InputModel.Text = "";
+                InputBrand.Text = "";
+                InputPrice.Text = "";
+                InputStock.Text = "";
+
+                MessageBox.Show("Data Have been Added Successfully !");
+            }
+        }
+
         private void button4_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -423,13 +490,13 @@ namespace FOI_PROJECT
             }
             else
             {
-                string query = "UPDATE compatibility SET compatible = '1' WHERE id1 = '" + SelectedItem1.Text + "' AND id2 = '" + SelectedItem2.Text + "' ";
+                string query = "UPDATE compatibility SET compatible = 1 WHERE id1 = '" + SelectedItem1.Text + "' AND id2 = '" + SelectedItem2.Text + "' ";
                 SqlCommand sc = new SqlCommand(query, con);
                 sc.ExecuteNonQuery();
-
+                
                 Fill_Compatible();
 
-                MessageBox.Show("The level of Optimal Compatibility has been Reach between the two components.");
+                MessageBox.Show("The level of Optimal Compatibility has been Reach Successfully!");
 
                 SelectedItem1.Text = "";
                 SelectedItem2.Text = "";
