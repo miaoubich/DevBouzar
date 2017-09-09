@@ -177,22 +177,28 @@ namespace FOI_PROJECT
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string strDelete = "DELETE FROM wish_List WHERE id = " + txt_ID.Text + "";
-            SqlCommand sc = new SqlCommand(strDelete, con);
-            sc.ExecuteNonQuery();
+            if (txt_ID.Text != "" && txt_Code.Text != "" && txt_Designation.Text != "" && txt_Model.Text != "" && txt_Brand.Text != "" && txt_Price.Text != "" && txt_Quantite.Text != "")
+            {
+                string strDelete = "DELETE FROM wish_List WHERE id = " + txt_ID.Text + "";
+                SqlCommand sc = new SqlCommand(strDelete, con);
+                sc.ExecuteNonQuery();
 
-            Fill_wish();
+                Fill_wish();
 
-            txt_ID.Text = "";
-            txt_Code.Text = "";
-            txt_Designation.Text = "";
-            txt_Model.Text = "";
-            txt_Brand.Text = "";
-            txt_Price.Text = "";
-            txt_Quantite.Text = ""; 
+                txt_ID.Text = "";
+                txt_Code.Text = "";
+                txt_Designation.Text = "";
+                txt_Model.Text = "";
+                txt_Brand.Text = "";
+                txt_Price.Text = "";
+                txt_Quantite.Text = "";
 
-            MessageBox.Show("Item has been DELETED Successfully!");
-
+                MessageBox.Show("Item has been DELETED Successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please select an item from the wish list.");
+            }
         }
 
         private void wish_Table_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -228,22 +234,30 @@ namespace FOI_PROJECT
 
         private void button3_Click(object sender, EventArgs e)
         {
-            cmd = new SqlCommand("UPDATE wish_List SET quantity = " + txt_Quantite.Text + " WHERE id = " + txt_ID.Text + "", con); 
-            cmd.ExecuteNonQuery();
+            if (txt_ID.Text != "" && txt_Code.Text != "" && txt_Designation.Text != "" && txt_Model.Text != "" && txt_Brand.Text != "" && txt_Price.Text != "" && txt_Quantite.Text != "")
+            {
 
-            txt_ID.Text = "";
-            txt_Code.Text = "";
-            txt_Designation.Text = "";
-            txt_Model.Text = "";
-            txt_Brand.Text = "";
-            txt_Price.Text = "";
-            txt_Quantite.Text = "";
-            txt_Search.Text = "";
+                cmd = new SqlCommand("UPDATE wish_List SET quantity = " + txt_Quantite.Text + " WHERE id = " + txt_ID.Text + "", con);
+                cmd.ExecuteNonQuery();
 
-            Fill_table();
-            Fill_wish(); 
+                txt_ID.Text = "";
+                txt_Code.Text = "";
+                txt_Designation.Text = "";
+                txt_Model.Text = "";
+                txt_Brand.Text = "";
+                txt_Price.Text = "";
+                txt_Quantite.Text = "";
+                txt_Search.Text = "";
 
-            MessageBox.Show("Item has been UPDATED Successfully!");
+                Fill_table();
+                Fill_wish();
+
+                MessageBox.Show("Item has been UPDATED Successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please select an item from the wish list.");
+            }
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
