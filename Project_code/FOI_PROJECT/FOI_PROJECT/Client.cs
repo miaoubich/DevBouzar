@@ -248,23 +248,30 @@ namespace FOI_PROJECT
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            string strAdd = "INSERT INTO wish_List(code_item, designation, model, brand, price, quantity) " +
-                            "VALUES('" + txt_Code.Text + "', '" + txt_Designation.Text + "', '" + txt_Model.Text + "'," +
-                            " '" + txt_Brand.Text + "', " + txt_Price.Text + ", " + txt_Quantite.Text + ")";
-            SqlCommand  sc = new SqlCommand(strAdd, con);
-            sc.ExecuteNonQuery();
+            if(txt_ID.Text != "" && txt_Code.Text != "" && txt_Designation.Text != "" && txt_Model.Text != "" && txt_Brand.Text != "" && txt_Price.Text != "" && txt_Quantite.Text != ""){
 
-            txt_ID.Text = "";
-            txt_Code.Text = "";
-            txt_Designation.Text = "";
-            txt_Model.Text = "";
-            txt_Brand.Text = "";
-            txt_Price.Text = "";
-            txt_Quantite.Text = "";
+                string strAdd = "INSERT INTO wish_List(code_item, designation, model, brand, price, quantity) " +
+                                "VALUES('" + txt_Code.Text + "', '" + txt_Designation.Text + "', '" + txt_Model.Text + "'," +
+                                " '" + txt_Brand.Text + "', " + txt_Price.Text + ", " + txt_Quantite.Text + ")";
+                SqlCommand sc = new SqlCommand(strAdd, con);
+                sc.ExecuteNonQuery();
 
-            Fill_wish();
+                txt_ID.Text = "";
+                txt_Code.Text = "";
+                txt_Designation.Text = "";
+                txt_Model.Text = "";
+                txt_Brand.Text = "";
+                txt_Price.Text = "";
+                txt_Quantite.Text = "";
 
-            txt_Search.Text = "";
+                Fill_wish();
+
+                txt_Search.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Please select an item from the component table.");
+            }
         }
 
         private void txt_Search_TextChanged(object sender, EventArgs e)
