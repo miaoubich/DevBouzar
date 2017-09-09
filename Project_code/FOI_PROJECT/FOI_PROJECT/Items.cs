@@ -298,8 +298,7 @@ namespace FOI_PROJECT
             //Add out table
             doc.Add(table);
 
-            doc.Close();//close document
-            //MessageBox.Show("Your Liste have been Created in PDF file successfully!");
+            doc.Close();
 
             this.timer2.Start();
 
