@@ -211,14 +211,11 @@ namespace FOI_PROJECT
                         {
                             SelectedItem1.Text = item;
 
-                            //if (SelectedItem1.Text != "")
-                            //{
-                                string idItem1 = "INSERT INTO compatibility(id1) VALUES('" + SelectedItem1.Text + "')";
-                                sc1 = new SqlCommand(idItem1, con);
-                                sc1.ExecuteNonQuery();
-                            //}
+                            string idItem1 = "INSERT INTO compatibility(id1) VALUES('" + SelectedItem1.Text + "')";
+                            sc1 = new SqlCommand(idItem1, con);
+                            sc1.ExecuteNonQuery();
                         }
-                        else if (SelectedItem1.Text != "")
+                        else
                         {
                             SelectedItem2.Text = item;
                             string idItem2 = "UPDATE compatibility SET id2 = '" + SelectedItem2.Text + "' WHERE id1 = '" + SelectedItem1.Text + "'";
