@@ -206,7 +206,6 @@
             this.deviceID.Name = "deviceID";
             this.deviceID.Size = new System.Drawing.Size(412, 26);
             this.deviceID.TabIndex = 20;
-            this.deviceID.TextChanged += new System.EventHandler(this.deviceID_TextChanged);
             // 
             // label12
             // 
@@ -225,7 +224,6 @@
             this.listBox4.Name = "listBox4";
             this.listBox4.Size = new System.Drawing.Size(954, 225);
             this.listBox4.TabIndex = 22;
-            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // button2
             // 

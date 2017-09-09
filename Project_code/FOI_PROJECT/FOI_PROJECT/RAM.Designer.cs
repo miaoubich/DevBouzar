@@ -86,7 +86,6 @@
             this.label4.Size = new System.Drawing.Size(221, 24);
             this.label4.TabIndex = 3;
             this.label4.Text = "Configured Clock Speed:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -97,7 +96,6 @@
             this.label5.Size = new System.Drawing.Size(136, 24);
             this.label5.TabIndex = 8;
             this.label5.Text = "Serial Number:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 

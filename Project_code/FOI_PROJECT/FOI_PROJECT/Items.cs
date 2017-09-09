@@ -51,7 +51,7 @@ namespace FOI_PROJECT
 
         public void Fill_Table()
         {
-            str = "SELECT *FROM component";
+            str = "SELECT id, code_item, designation, model, brand, price, stock FROM component";
             sda = new SqlDataAdapter(str, con);
             dt = new DataTable();
             sda.Fill(dt);
@@ -183,17 +183,7 @@ namespace FOI_PROJECT
             }
             
         }
-
-        private void txt_Table_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void txt_Table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             category.Text = "";
@@ -249,24 +239,7 @@ namespace FOI_PROJECT
 
         private void Items_FormClosing(object sender, FormClosingEventArgs e)
         {
-            /*
-            const string m = "Please Confirm Closing the System.";
-            const string caption = "Form Closing.";
-            var result = MessageBox.Show(m, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //if the No button was pressed...
-            if (result == DialogResult.No)
-            {
-                //cancel closure of the form.
-                e.Cancel = true;
-            }
-            */
             Application.Exit();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -336,20 +309,10 @@ namespace FOI_PROJECT
             System.Diagnostics.Process.Start("hardware.pdf");// (@"C:\Users\DARIN\Documents\Visual Studio 2017\Projects\FOI_PROJECT\FOI_PROJECT\bin\Debug\hardware.pdf");
 
         }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.progressBar1.Increment(10);
-        }
-
-        private void mother_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -376,22 +339,12 @@ namespace FOI_PROJECT
         {
             this.progressBar1.Increment(10);
         }
-
-        private void lblDesignation_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button11_Click(object sender, EventArgs e)
         {
             this.Close();
             RAM r = new RAM();
             r.Show();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void usedRam_Click(object sender, EventArgs e)
@@ -407,18 +360,7 @@ namespace FOI_PROJECT
                 usedRam.Text = f1.ToString();
             }
         }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ItemsCompatible_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-           
-        }
-
+        
         private void ItemsCompatible_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var item = ItemsCompatible.Rows[e.RowIndex].Cells[0].Value.ToString();

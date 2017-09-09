@@ -79,15 +79,6 @@ namespace FOI_PROJECT
                     MessageBox.Show("Please select an Item you wish to delete.");
                 }
                 else
-                /*
-                 {
-                    string q = "DELETE FROM component WHERE (id = '" + txt_Search.Text + "')";
-                    SqlCommand cmd = new SqlCommand(q, con);
-                    cmd.ExecuteNonQuery();
-                    Fill_Table();
-                    MessageBox.Show("Data Have been DELETED Successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                */
                 {
                     str = "DELETE FROM [user] WHERE (id = " + txt_Search.Text + ")";
                     sc = new SqlCommand(str, con);
@@ -102,12 +93,7 @@ namespace FOI_PROJECT
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void txt_Search_TextChanged(object sender, EventArgs e)
         {
             if (txt_Search.Text == "")

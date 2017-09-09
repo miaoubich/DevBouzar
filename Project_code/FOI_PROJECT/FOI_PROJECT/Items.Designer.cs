@@ -36,7 +36,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.txt_Search = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.category = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Slots = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -77,6 +76,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btn_Add = new System.Windows.Forms.Button();
+            this.category = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this._17075i_DBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._17075i_DBDataSet5)).BeginInit();
@@ -153,23 +153,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Components Management";
             // 
-            // category
-            // 
-            this.category.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.category.FormattingEnabled = true;
-            this.category.Items.AddRange(new object[] {
-            "code item",
-            "designation",
-            "model",
-            "brand",
-            "price",
-            "stock"});
-            this.category.Location = new System.Drawing.Point(933, 240);
-            this.category.Name = "category";
-            this.category.Size = new System.Drawing.Size(145, 21);
-            this.category.TabIndex = 9;
-            this.category.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -208,7 +191,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(210, 16);
             this.progressBar1.TabIndex = 16;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // ItemsTable
             // 
@@ -243,7 +225,6 @@
             this.lblDesignation.Size = new System.Drawing.Size(16, 22);
             this.lblDesignation.TabIndex = 19;
             this.lblDesignation.Text = ".";
-            this.lblDesignation.Click += new System.EventHandler(this.lblDesignation_Click);
             // 
             // lblSerial
             // 
@@ -313,7 +294,6 @@
             this.usedRam.Size = new System.Drawing.Size(15, 22);
             this.usedRam.TabIndex = 29;
             this.usedRam.Text = ".";
-            this.usedRam.Click += new System.EventHandler(this.label3_Click);
             // 
             // label6
             // 
@@ -326,7 +306,6 @@
             this.label6.Size = new System.Drawing.Size(16, 22);
             this.label6.TabIndex = 23;
             this.label6.Text = ".";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label3
             // 
@@ -435,7 +414,6 @@
             this.ItemsCompatible.Size = new System.Drawing.Size(279, 168);
             this.ItemsCompatible.TabIndex = 34;
             this.ItemsCompatible.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsCompatible_CellClick);
-            this.ItemsCompatible.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsCompatible_CellContentClick);
             // 
             // button6
             // 
@@ -568,6 +546,22 @@
             this.btn_Add.UseVisualStyleBackColor = true;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
+            // category
+            // 
+            this.category.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.category.FormattingEnabled = true;
+            this.category.Items.AddRange(new object[] {
+            "code item",
+            "designation",
+            "model",
+            "brand",
+            "price",
+            "stock"});
+            this.category.Location = new System.Drawing.Point(933, 240);
+            this.category.Name = "category";
+            this.category.Size = new System.Drawing.Size(145, 21);
+            this.category.TabIndex = 9;
+            // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -644,7 +638,6 @@
         private _17075i_DBDataSetTableAdapters.componentsTableAdapter componentsTableAdapter1;
         private System.Windows.Forms.BindingSource componentsBindingSource3;
         private _17075i_DBDataSetTableAdapters.componentsTableAdapter componentsTableAdapter2;
-        private System.Windows.Forms.ComboBox category;
         private System.Windows.Forms.Label label2;
         private _17075i_DBDataSet1 _17075i_DBDataSet1;
         private System.Windows.Forms.BindingSource componentsBindingSource4;
@@ -704,5 +697,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btn_Add;
+        private System.Windows.Forms.ComboBox category;
     }
 }

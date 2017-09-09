@@ -92,13 +92,7 @@ namespace FOI_PROJECT
             sda1.Fill(dt1);
             wish_Table.DataSource = dt1;
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
+        
         private void txtPrint_Click(object sender, EventArgs e)
         {
             Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);// A0, A1,...,A4,...
@@ -174,11 +168,6 @@ namespace FOI_PROJECT
             txt_Brand.Text = "";
             txt_Price.Text = "";
             txt_Quantite.Text = "";
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -323,14 +312,6 @@ namespace FOI_PROJECT
             else if (comboBox1.Text == "Stock")
             {
                 str = "SELECT *FROM component WHERE stock LIKE '" + txt_Search.Text + "%'";
-                sda = new SqlDataAdapter(str, con);
-                dt = new DataTable();
-                sda.Fill(dt);
-                ItemsTable.DataSource = dt;
-            }
-            else if (comboBox1.Text == "Compatible")
-            {
-                str = "SELECT FROM component WHERE compatibility LIKE '" + txt_Search.Text + "%'";
                 sda = new SqlDataAdapter(str, con);
                 dt = new DataTable();
                 sda.Fill(dt);

@@ -73,18 +73,8 @@ namespace FOI_PROJECT
             */
         }
 
-       
-        private void deviceID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
