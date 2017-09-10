@@ -32,45 +32,45 @@ namespace FOI_PROJECT
                 con.Close();
             }
             con.Open();
+            if (txt_Username.Text != "" && txt_Password.Text != "") {
+                str = "SELECT COUNT(*) FROM [user] WHERE  username = '" + txt_Username.Text + "' AND password = '" + txt_Password.Text + "'";
+                utype1 = "SELECT type FROM [user] WHERE  username = '" + txt_Username.Text + "' AND password = '" + txt_Password.Text + "'";
 
-            str = "SELECT COUNT(*) FROM [user] WHERE  username = '" + txt_Username.Text + "' AND password = '" + txt_Password.Text + "'";
-            utype1 = "SELECT type FROM [user] WHERE  username = '" + txt_Username.Text + "' AND password = '" + txt_Password.Text + "'";
+                SqlCommand sc = new SqlCommand(utype1, con);
+                sc.ExecuteNonQuery();
+                utype = sc.ExecuteScalar().ToString();
 
-            SqlCommand sc = new SqlCommand(utype1, con);
-            sc.ExecuteNonQuery();
-            utype = sc.ExecuteScalar().ToString();
+                sda = new SqlDataAdapter(str, con);
+                dt = new DataTable();
+                sda.Fill(dt);
 
-            sda = new SqlDataAdapter(str, con);
-            dt = new DataTable();
-            sda.Fill(dt);
-
-            if (dt.Rows.Count > 0)
-            {
-                if (utype == "administrator")
+                if (dt.Rows.Count > 0)
                 {
-                    this.Hide();
-                    Principle it = new Principle();
-                    it.Show();
-                    //MessageBox.Show("Welcome back " + txt_Username.Text);
+                    if (utype == "administrator")
+                    {
+                        this.Hide();
+                        Principle it = new Principle();
+                        it.Show();
+                        //MessageBox.Show("Welcome back " + txt_Username.Text);
+                    }
+                    else
+                    {
+                        this.Hide();
+                        Client c = new Client();
+                        c.Show();
+                        //MessageBox.Show("Welcome back " + txt_Username.Text);
+                    }
+
                 }
                 else
                 {
-                    this.Hide();
-                    Client c = new Client();
-                    c.Show();
-                    //MessageBox.Show("Welcome back " + txt_Username.Text);
+                    MessageBox.Show("Username or Password is INCORRECT!!!");
                 }
-                
             }
             else
             {
-                MessageBox.Show("Username or Password is INCORRECT!!!");
+                MessageBox.Show("Please enter a Username and a Password.");
             }
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
         }
 
