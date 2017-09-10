@@ -162,24 +162,31 @@ namespace FOI_PROJECT
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if(txt_Search.Text == "") {
-                    MessageBox.Show("Please Selected a ROW!");
-                }
-                else
+           const string m = "Please Confirm.";
+            const string c = "DELETION";
+            var result = MessageBox.Show(m, c, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes) {
+
+                try
                 {
-                    string q = "DELETE FROM component WHERE (id = '" + txt_Search.Text + "')";
-                    SqlCommand cmd = new SqlCommand(q, con);
-                    cmd.ExecuteNonQuery();
-                    Fill_Table();
-                    MessageBox.Show("Data Have been DELETED Successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (txt_Search.Text == "") {
+                        MessageBox.Show("Please Selected a ROW!");
+                    }
+                    else
+                    {
+                        string q = "DELETE FROM component WHERE (id = '" + txt_Search.Text + "')";
+                        SqlCommand cmd = new SqlCommand(q, con);
+                        cmd.ExecuteNonQuery();
+                        Fill_Table();
+                        MessageBox.Show("Data Have been DELETED Successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    txt_Search.Clear();
                 }
-                txt_Search.Clear();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Please Selected a ROW!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Please Selected a ROW!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             
         }
@@ -248,7 +255,7 @@ namespace FOI_PROJECT
 
         private void Slots_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             UsedSlot sl = new UsedSlot();
             sl.Show();
         }
@@ -415,7 +422,7 @@ namespace FOI_PROJECT
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             PC_info pc = new PC_info();
             pc.Show();
         }

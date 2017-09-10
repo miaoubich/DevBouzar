@@ -210,6 +210,7 @@ namespace FOI_PROJECT
             txt_Brand.Text = wish_Table.Rows[e.RowIndex].Cells[4].Value.ToString();
             txt_Price.Text = wish_Table.Rows[e.RowIndex].Cells[5].Value.ToString();
             txt_Quantite.Text = wish_Table.Rows[e.RowIndex].Cells[6].Value.ToString();
+
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -236,7 +237,6 @@ namespace FOI_PROJECT
         {
             if (txt_ID.Text != "" && txt_Code.Text != "" && txt_Designation.Text != "" && txt_Model.Text != "" && txt_Brand.Text != "" && txt_Price.Text != "" && txt_Quantite.Text != "")
             {
-
                 cmd = new SqlCommand("UPDATE wish_List SET quantity = " + txt_Quantite.Text + " WHERE id = " + txt_ID.Text + "", con);
                 cmd.ExecuteNonQuery();
 
@@ -270,6 +270,26 @@ namespace FOI_PROJECT
                 SqlCommand sc = new SqlCommand(strAdd, con);
                 sc.ExecuteNonQuery();
 
+                string oldstk = "SELECT stock FROM component WHERE id = " + txt_ID.Text + "";
+                string soldQ = "SELECT quantity FROM wish_List WHERE code_item = '"+ txt_Code.Text + "'";
+
+                SqlCommand sc1 = new SqlCommand(oldstk, con);
+                sc1.ExecuteNonQuery();
+                string oldStock = sc1.ExecuteScalar().ToString();
+
+                SqlCommand sc2 = new SqlCommand(soldQ, con);
+                sc2.ExecuteScalar();
+                string SoldQuantity = sc2.ExecuteScalar().ToString();
+
+                int oldStock1 = int.Parse(oldStock);
+                int SoldQuantity1 = int.Parse(SoldQuantity);
+
+                int NewStock = oldStock1 - SoldQuantity1;
+
+                string UpdateQuantity = "UPDATE component SET stock = " + NewStock + " WHERE id = " + txt_ID.Text + "";
+                SqlCommand cmdUpdate = new SqlCommand(UpdateQuantity, con);
+                cmdUpdate.ExecuteNonQuery();
+
                 txt_ID.Text = "";
                 txt_Code.Text = "";
                 txt_Designation.Text = "";
@@ -278,6 +298,7 @@ namespace FOI_PROJECT
                 txt_Price.Text = "";
                 txt_Quantite.Text = "";
 
+                Fill_table();
                 Fill_wish();
 
                 txt_Search.Text = "";
@@ -286,6 +307,11 @@ namespace FOI_PROJECT
             {
                 MessageBox.Show("Please select an item from the component table.");
             }
+        }
+
+        private void txt_Quantite_Leave(object sender, EventArgs e)
+        {
+
         }
 
         private void txt_Search_TextChanged(object sender, EventArgs e)

@@ -35,6 +35,7 @@ namespace FOI_PROJECT
 
             str = "SELECT COUNT(*) FROM [user] WHERE  username = '" + txt_Username.Text + "' AND password = '" + txt_Password.Text + "'";
             utype1 = "SELECT type FROM [user] WHERE  username = '" + txt_Username.Text + "' AND password = '" + txt_Password.Text + "'";
+
             SqlCommand sc = new SqlCommand(utype1, con);
             sc.ExecuteNonQuery();
             utype = sc.ExecuteScalar().ToString();
