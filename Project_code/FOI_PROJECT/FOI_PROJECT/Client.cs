@@ -239,6 +239,8 @@ namespace FOI_PROJECT
         {
             if (txt_ID.Text != "" && txt_Code.Text != "" && txt_Designation.Text != "" && txt_Model.Text != "" && txt_Brand.Text != "" && txt_Price.Text != "" && txt_Quantite.Text != "")
             {
+                //string QuantityBack = "SELECT quantity FROM Wish_List WHERE id = " + txt_ID.Text + "";
+
                 cmd = new SqlCommand("UPDATE wish_List SET quantity = " + txt_Quantite.Text + " WHERE id = " + txt_ID.Text + "", con);
                 cmd.ExecuteNonQuery();
 
@@ -287,11 +289,23 @@ namespace FOI_PROJECT
                 int SoldQuantity1 = int.Parse(SoldQuantity);
 
                 int NewStock = oldStock1 - SoldQuantity1;
-
-                string UpdateQuantity = "UPDATE component SET stock = " + NewStock + " WHERE id = " + txt_ID.Text + "";
-                SqlCommand cmdUpdate = new SqlCommand(UpdateQuantity, con);
-                cmdUpdate.ExecuteNonQuery();
-
+                if (NewStock >= 0) {
+                    /*
+                    string strAdd = "INSERT INTO wish_List(code_item, designation, model, brand, price, quantity) " +
+                                "VALUES('" + txt_Code.Text + "', '" + txt_Designation.Text + "', '" + txt_Model.Text + "'," +
+                                " '" + txt_Brand.Text + "', " + txt_Price.Text + ", " + txt_Quantite.Text + ")";
+                    SqlCommand sc = new SqlCommand(strAdd, con);
+                    sc.ExecuteNonQuery();*/
+                    
+                    string UpdateQuantity = "UPDATE component SET stock = " + NewStock + " WHERE id = " + txt_ID.Text + "";
+                    SqlCommand cmdUpdate = new SqlCommand(UpdateQuantity, con);
+                    cmdUpdate.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Sorry but the quantity selected is not available, please adjust the quantity.");
+                    txt_Quantite.Text = "";
+                }
                 txt_ID.Text = "";
                 txt_Code.Text = "";
                 txt_Designation.Text = "";
@@ -380,6 +394,20 @@ namespace FOI_PROJECT
             txt_Price.Text = ItemsTable.Rows[e.RowIndex].Cells[5].Value.ToString();
             txt_Quantite.Text = ItemsTable.Rows[e.RowIndex].Cells[6].Value.ToString();
 
+            int q = int.Parse(txt_Quantite.Text);
+
+            if (q<1)
+            {
+                txt_ID.Text = "";
+                txt_Code.Text = "";
+                txt_Designation.Text = "";
+                txt_Model.Text = "";
+                txt_Brand.Text = "";
+                txt_Price.Text = "";
+                txt_Quantite.Text = "";
+
+                MessageBox.Show("Sorry but this item is not available.");
+            }
             //int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
             
         }
