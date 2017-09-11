@@ -95,11 +95,13 @@ namespace FOI_PROJECT
         
         private void txtPrint_Click(object sender, EventArgs e)
         {
+            Random r = new Random();
+            int x = r.Next(100000);
             Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);// A0, A1,...,A4,...
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("hardware.pdf", FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Shopping List"+ x + ".pdf", FileMode.Create));
             doc.Open();//open Document to write
             //write some content
-            Paragraph para = new Paragraph("Wish List Of Items");
+            Paragraph para = new Paragraph("Components Shopping List");
             Paragraph para1 = new Paragraph("\n");
             para.Alignment = Element.ALIGN_CENTER;
             doc.Add(para);

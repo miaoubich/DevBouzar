@@ -266,7 +266,7 @@ namespace FOI_PROJECT
             PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("hardware.pdf", FileMode.Create));
             doc.Open();//open Document to write
             //write some content
-            Paragraph para = new Paragraph("Wish List Of Items");
+            Paragraph para = new Paragraph("List Of Computer Components");
             Paragraph para1 = new Paragraph("\n");
             para.Alignment = Element.ALIGN_CENTER;
             doc.Add(para);
