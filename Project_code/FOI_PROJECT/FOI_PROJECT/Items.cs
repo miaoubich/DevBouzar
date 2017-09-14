@@ -162,11 +162,11 @@ namespace FOI_PROJECT
 
         private void button3_Click(object sender, EventArgs e)
         {
-           const string m = "Please Confirm.";
+           /*const string m = "Please Confirm.";
             const string c = "DELETION";
             var result = MessageBox.Show(m, c, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes) {
+            if (result == DialogResult.Yes) {*/
 
                 try
                 {
@@ -187,7 +187,7 @@ namespace FOI_PROJECT
                 {
                     MessageBox.Show(ex.Message, "Please Selected a ROW!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+            //}
             
         }
         
@@ -272,17 +272,7 @@ namespace FOI_PROJECT
             doc.Add(para);
             doc.Add(para1);
 
-            //list.IndentationLeft = 35f; //when we create a list with a margin in the left
-
-            //Add Header
-            /*
-            BaseFont bfntHead = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-            iTextSharp.text.Font fntHead = new iTextSharp.text.Font(bfntHead, 16, 1, Color.GRAY);
-            Paragraph prgHeading = new Paragraph();
-            prgHeading.Alignment = Element.ALIGN_CENTER;
-            prgHeading.Add(new Chunk("Wish List Of Items".ToUpper(), fntHead));
-            doc.Add(prgHeading);
-            */
+            
             PdfPTable table = new PdfPTable(ItemsTable.Columns.Count);
             //Add the header from txt_Table to the table
             for (int j = 0; j < ItemsTable.Columns.Count; j++)
@@ -418,6 +408,11 @@ namespace FOI_PROJECT
 
                 MessageBox.Show("Data Have been Added Successfully !");
             }
+        }
+
+        private void btn_delete_MouseHover(object sender, EventArgs e)
+        {
+            //Color.White.ToString();
         }
 
         private void button4_Click_1(object sender, EventArgs e)

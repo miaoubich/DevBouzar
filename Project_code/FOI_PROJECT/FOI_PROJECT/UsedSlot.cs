@@ -101,7 +101,7 @@ namespace FOI_PROJECT
 
             listBox4.SelectedItems.Clear();
             int j = listBox4.Items.Count;// nbr of items in the listBox4
-            for (int i = listBox4.Items.Count-1; i>=0; i--)
+            for (int i = j-1; i>=0; i--)
             {
                 if (listBox4.Items[i].ToString().Contains("DeviceID: " + deviceID.Text))
                 {
