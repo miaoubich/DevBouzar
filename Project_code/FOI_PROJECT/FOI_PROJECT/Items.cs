@@ -34,10 +34,11 @@ namespace FOI_PROJECT
         private void Items_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the '_17075i_DBDataSet5.component' table. You can move, or remove it, as needed.
-            this.componentTableAdapter.Fill(this._17075i_DBDataSet5.component);
+            //this.componentTableAdapter.Fill(this._17075i_DBDataSet5.component);
 
 
-            con = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433;Initial Catalog=17075i_DB;Persist Security Info=True;User ID=17075i_User;Password=Gjrwxk63");
+            //con = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433;Initial Catalog=17075i_DB;Persist Security Info=True;User ID=17075i_User;Password=Gjrwxk63");
+            con = new SqlConnection(@"Data Source=MIAOUBICH\SQLEXPRESS;Initial Catalog=Project_01;Integrated Security=True");
 
             if (con.State == ConnectionState.Open)
             {
@@ -413,6 +414,11 @@ namespace FOI_PROJECT
         private void btn_delete_MouseHover(object sender, EventArgs e)
         {
             //Color.White.ToString();
+        }
+
+        private void usedRam_Click_1(object sender, EventArgs e)
+        {
+
         }
 
         private void button4_Click_1(object sender, EventArgs e)

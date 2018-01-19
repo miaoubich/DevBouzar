@@ -303,6 +303,7 @@
             this.usedRam.Size = new System.Drawing.Size(15, 22);
             this.usedRam.TabIndex = 29;
             this.usedRam.Text = ".";
+            this.usedRam.Click += new System.EventHandler(this.usedRam_Click_1);
             // 
             // label6
             // 

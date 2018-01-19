@@ -60,6 +60,11 @@ namespace FOI_PROJECT
             it.Show();
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void search_textBox_TextChanged(object sender, EventArgs e)
         {/*
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT FROM Win32_PnPEntity WHERE DeviceID = '" + deviceID + "%'");

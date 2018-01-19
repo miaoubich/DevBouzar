@@ -69,7 +69,7 @@ namespace FOI_PROJECT
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            Items it = new Items();
+            PC_info it = new PC_info();
             it.Show();
         }
 

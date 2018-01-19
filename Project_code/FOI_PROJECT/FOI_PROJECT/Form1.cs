@@ -25,7 +25,8 @@ namespace FOI_PROJECT
 
         private void button1_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433;Initial Catalog=17075i_DB;Persist Security Info=True;User ID=17075i_User;Password=Gjrwxk63");
+            //con = new SqlConnection(@"Data Source=31.147.204.119\PISERVER,1433;Initial Catalog=17075i_DB;Persist Security Info=True;User ID=17075i_User;Password=Gjrwxk63");
+            con = new SqlConnection(@"Data Source=MIAOUBICH\SQLEXPRESS;Initial Catalog=Project_01;Integrated Security=True");
 
             if(con.State == ConnectionState.Open)
             {
@@ -80,7 +81,7 @@ namespace FOI_PROJECT
             const string caption = "Form Closing.";
             var result = MessageBox.Show(m, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            //if the No button was pressed...
+            //if the Yes button was pressed...
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
