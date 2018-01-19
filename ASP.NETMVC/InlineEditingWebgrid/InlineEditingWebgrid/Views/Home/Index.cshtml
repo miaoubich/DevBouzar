@@ -1,0 +1,27 @@
+﻿@model List<InlineEditingWebgrid.ViewModel.SiteUserModel>
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 10);
+}
+
+<h2>Inplace Editing in WebGrid</h2>
+<hr/>
+<div class="row">
+    @grid.GetHtml(
+            tableStyle: "table table-responsive table-striped table-bordered",
+            columns: grid.Columns(
+                grid.Column(header: "First Name", format: @<text><div class="edit" data-id="@item.ID" data-propertyname="FirstName">@item.FirstName</div></text>),
+                grid.Column(header: "Last Name", format:@<text><div class="edit" data-id="@item.ID" data-propertyname="LastName">@item.LastName</div></text>),
+                grid.Column(header: "Role", format:@<text><div class="editSelect" data-id="@item.ID" data-propertyname="RoleID">@item.RoleName</div></text>),
+                grid.Column(header: "Date of Birth", format:@<text><div class="editDate" data-id="@item.ID" data-propertyname="DOB">@string.Format("{0:dd-MMM-yyyy}", item.DOB)</div></text>)
+                                            )
+                                        )
+</div>
+
+<style>
+    .table td {
+        width: 25%;
+    }
+</style>
+
