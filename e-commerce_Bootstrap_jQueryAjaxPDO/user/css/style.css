@@ -1,0 +1,8 @@
+
+*{margin:0; padding:0; font-family:Verdana, Geneva, sans-serif; }
+
+#bodyhead{height:200px; width:98%;padding:1%; box-sizing:border-box; margin:0% 1%; border-radius:3px; border:1px solid #eee;}
+
+#bodyleft{padding:0% 1% 1% 1%; box-sizing:border-box; border-radius:3px;min-height:700px; width:25%; background:#fff; margin:1%; float:left; border:1px solid #eee;}
+
+#bodyright{box-sizing:border-box;padding:1%; margin:;min-height:700px;width:72%;border:1px solid #eee;float:left;margin:1% 0%;}

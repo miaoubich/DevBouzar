@@ -1,0 +1,32 @@
+#site-footer{
+	background: #e1e1e1;/*#f2f2f2;*/
+	/*padding: 30px;
+	margin-top: 30px;*/
+	width: 100%;
+	box-sizing:border-box;
+}
+
+.bottom-footer{
+	border-top: 1px solid #000;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+.footer-nav{
+	list-style: none;
+	text-align: right;
+}
+.footer-nav li{
+	display: inline;
+}
+.footer-nav li:not(:first-child):before{
+	content: '|';
+	padding: 0px 10px;
+}
+.bottom-footer a{
+	color: #000;
+}
+.bottom-footer a:hover{
+	color: red;
+	text-decoration: none;
+}
