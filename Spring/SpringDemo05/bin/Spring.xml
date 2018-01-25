@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="restoBean05" class="com.miaoubich.demo.Restaurant">
+		<property name="listOdWaiters">
+			<list>
+				<value>Mr. ABC</value>
+				<value>Mr. DEF</value>
+				<value>Mr. GHW</value>
+				<value>Mr. LOK</value>
+				<value>Mr. ALI</value>
+				<value>Mr. NJI</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>
