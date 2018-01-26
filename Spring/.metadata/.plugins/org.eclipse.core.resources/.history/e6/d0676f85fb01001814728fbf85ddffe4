@@ -1,0 +1,22 @@
+package com.miaoubich.demo;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class ClassMain {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext con = new ClassPathXmlApplicationContext("Spring.xml");
+		
+		((AbstractApplicationContext) con).registerShutdownHook(); //to destroy all the beans have been created
+		
+		Restaurant Robj1= (Restaurant) con.getBean("restoBean");
+		Robj1.greetCustomer();
+		
+		//((AbstractApplicationContext) con).close();
+
+	}
+
+}
