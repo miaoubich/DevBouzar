@@ -4,9 +4,7 @@
  xsi:schemaLocation="http://www.springframework.org/schema/beans 
  http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="restoBean" class="com.miaoubich.demo.Restaurant">
+	<bean id="restoBean" class="com.miaoubich.demo.Restaurant" scope="singleton">
 	</bean>
-	<!-- the following bean allow spring framework to recognize the annotations because are desabled by default-->
-<!-- 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> -->
 	
 </beans>

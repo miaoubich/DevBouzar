@@ -46,7 +46,7 @@ public class Restaurant implements InitializingBean, DisposableBean{
 	public void destroy() throws Exception {
 
 
-		System.out.println("Restaurant Bean is destroying now.");
+		System.out.println("Restaurant Bean is destroying now.")
 		
 	}
 	

@@ -26,7 +26,6 @@ package com.miaoubich.demo;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 public class Restaurant implements InitializingBean, DisposableBean{
@@ -39,14 +38,6 @@ public class Restaurant implements InitializingBean, DisposableBean{
 	public void afterPropertiesSet() throws Exception {
 
 		System.out.println("Restaurant Bean is going through afterPropertiesSet");
-		
-	}
-
-	@Override
-	public void destroy() throws Exception {
-
-
-		System.out.println("Restaurant Bean is destroying now.");
 		
 	}
 	

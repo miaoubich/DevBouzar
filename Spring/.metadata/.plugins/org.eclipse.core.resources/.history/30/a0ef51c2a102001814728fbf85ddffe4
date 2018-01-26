@@ -1,4 +1,4 @@
-//13- Bean Life Cycle using Annotations and InitializingBean,DisposableBean interface
+//Bean Life Cycle using Annotations and InitializingBean,DisposableBean interface
 
 package com.miaoubich.demo;
 
