@@ -1,0 +1,7 @@
+package com.miaoubich.MavenDemo;
+
+import junit.framework.TestCase;
+
+public class AppTeyt extends TestCase {
+
+}

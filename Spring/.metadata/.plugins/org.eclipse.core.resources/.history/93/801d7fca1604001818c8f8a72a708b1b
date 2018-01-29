@@ -1,0 +1,5 @@
+package com.miaoubich.MavenDemo;
+
+public @interface Test {
+
+}
