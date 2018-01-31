@@ -13,9 +13,9 @@ public class MainClass {
 
 		Users user = new Users();
 		
-		user.setUid(4);
-		user.setUfname("Albi");
-		user.setUlname("Tsong");
+		//user.setUid(1);
+		user.setUfname("A");
+		user.setUlname("AA");
 		
 		Configuration config = new Configuration().configure().addAnnotatedClass(Users.class);
 		ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();
